@@ -1,0 +1,17 @@
+{
+    "name": "argentum88/php-oop",
+    "description": "Thinking in OOP",
+    "keywords": ["oop", "php"],
+    "type": "project",
+    "require": {
+		"php": ">=7.1"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Argentum88\\OOP\\": "src/"
+        }
+    }
+}
