@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+
+<?php
+
+use Argentum88\OOP\IpToGeoInformer;
+use GuzzleHttp\Client;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$ip = $argc > 1 ? $argv[1] : '';
+
+$ipToGeoInformer = new IpToGeoInformer(new Client(['base_uri' => 'http://ip-api.com']));
+
+$info = $ipToGeoInformer->getInfo($ip);
+echo $info['city'].PHP_EOL;

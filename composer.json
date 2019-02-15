@@ -2,16 +2,26 @@
     "name": "argentum88/php-oop",
     "description": "Thinking in OOP",
     "keywords": ["oop", "php"],
-    "type": "project",
+    "type": "library",
     "require": {
-		"php": ">=7.1"
+		"php": ">=7.1",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
-		"phpunit/phpunit": "7.*"
+		"phpunit/phpunit": "8.*",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "scripts": {
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
+        "phpunit": "phpunit",
+        "test": "phpunit tests"
     },
     "autoload": {
         "psr-4": {
-            "Argentum88\\OOP\\": "src/"
+            "Argentum88\\OOP\\": "src/",
+            "Argentum88\\OOP\\Tests\\": "tests/"
         }
     }
 }
