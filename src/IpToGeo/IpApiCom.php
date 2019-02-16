@@ -5,6 +5,7 @@ namespace Argentum88\OOP\IpToGeo;
 use Argentum88\OOP\GeoInfo\GeoInfo;
 use Argentum88\OOP\GeoInfoInterface;
 use Argentum88\OOP\IpToGeoInterface;
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -20,7 +21,7 @@ class IpApiCom implements IpToGeoInterface
 
     /**
      * @throws GuzzleException
-     * @throws \Exception
+     * @throws Exception
      */
     public function getInfo(string $ip): GeoInfoInterface
     {
@@ -28,7 +29,7 @@ class IpApiCom implements IpToGeoInterface
         $data = json_decode($response->getBody()->getContents(), true);
 
         if (!is_array($data) || !array_key_exists('city', $data) || !array_key_exists('country', $data)) {
-            throw new \Exception();
+            throw new Exception();
         }
 
         return new GeoInfo($data['city'], $data['country']);

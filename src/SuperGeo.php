@@ -2,6 +2,8 @@
 
 namespace Argentum88\OOP;
 
+use Exception;
+
 class SuperGeo
 {
     /**
@@ -15,7 +17,7 @@ class SuperGeo
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function getInfo(string $ip): GeoInfoInterface
     {
@@ -25,10 +27,16 @@ class SuperGeo
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
-    private function validateIp(string $ip)
+    private function validateIp(string $ip): void
     {
-        return;
+        if ($ip == '') {
+            return;
+        }
+
+        if (!filter_var($ip, FILTER_VALIDATE_IP)) {
+            throw new Exception();
+        }
     }
 }
