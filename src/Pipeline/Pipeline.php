@@ -18,9 +18,9 @@ class Pipeline
 
     public function apply()
     {
-        foreach ($this->operations as $operation) {
+        array_map(function ($operation) {
             $this->items = $operation($this->items);
-        }
+        }, $this->operations);
 
         return $this->items;
     }
