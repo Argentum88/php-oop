@@ -16,7 +16,7 @@ class SuperGeoTest extends TestCase
     public function setUp(): void
     {
         $stub = $this->createMock(IpToGeoInterface::class);
-        $stub->method('getInfo')->willReturn(new GeoInfo('Foo', 'Bar'));
+        $stub->method('getInfo')->willReturn(new GeoInfo('Mountain View', 'United States'));
 
         $this->superGeo = new SuperGeo($stub);
     }
@@ -29,7 +29,7 @@ class SuperGeoTest extends TestCase
 
     public function testGetInfo()
     {
-        $this->assertInstanceOf(GeoInfoInterface::class, $this->superGeo->getInfo(''));
-        $this->assertInstanceOf(GeoInfoInterface::class, $this->superGeo->getInfo('8.8.8.8'));
+        $this->assertEquals('Mountain View', $this->superGeo->getInfo('8.8.8.8')->getCity());
+        $this->assertEquals('United States', $this->superGeo->getInfo('8.8.8.8')->getCountry());
     }
 }
