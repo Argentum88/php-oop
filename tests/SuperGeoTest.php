@@ -11,7 +11,7 @@ class SuperGeoTest extends TestCase
 {
     public function testGetInfo()
     {
-        //тут нужен двойник
+        //todo тут нужен двойник
         $geoService = new IpApiCom();
         $superGeo = new SuperGeo($geoService);
 
