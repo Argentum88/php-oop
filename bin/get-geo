@@ -2,14 +2,15 @@
 
 <?php
 
-use Argentum88\OOP\IpToGeoInformer;
-use GuzzleHttp\Client;
+use Argentum88\OOP\IpToGeo\IpApiCom;
+use Argentum88\OOP\SuperGeo;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $ip = $argc > 1 ? $argv[1] : '';
 
-$ipToGeoInformer = new IpToGeoInformer(new Client(['base_uri' => 'http://ip-api.com']));
+$geoService = new IpApiCom();
+$superGeo = new SuperGeo($geoService);
 
-$info = $ipToGeoInformer->getInfo($ip);
-echo $info['city'].PHP_EOL;
+$info = $superGeo->getInfo($ip);
+echo "{$info->getCountry()} - {$info->getCity()}\n";
