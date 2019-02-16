@@ -3,7 +3,6 @@
 namespace Argentum88\OOP\Tests\Geo;
 
 use Argentum88\OOP\Geo\GeoInfo\GeoInfo;
-use Argentum88\OOP\Geo\GeoInfoInterface;
 use Argentum88\OOP\Geo\IpToGeoInterface;
 use Argentum88\OOP\Geo\SuperGeo;
 use PHPUnit\Framework\TestCase;
