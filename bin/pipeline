@@ -25,8 +25,9 @@ $upperCase = function($items) {
 };
 
 $items = array_diff(scandir(getcwd()), array('.', '..'));
-$pipeline = new Pipeline(array_values($items), [$middle, $plural, $upperCase]);
+$pipeline = new Pipeline(array_values($items), ['middle' => $middle, 'plural' => $plural, 'upperCase' => $upperCase]);
+$result = $pipeline->middle()->plural()->upperCase();
 
 array_map(function ($item) {
     echo $item.PHP_EOL;
-}, $pipeline->apply());
+}, $result->getItems());

@@ -28,7 +28,9 @@ class SuperGeoTest extends TestCase
 
     public function testGetInfo()
     {
-        $this->assertEquals('Mountain View', $this->superGeo->getInfo('8.8.8.8')->getCity());
-        $this->assertEquals('United States', $this->superGeo->getInfo('8.8.8.8')->getCountry());
+        $info = $this->superGeo->getInfo('8.8.8.8');
+
+        $this->assertEquals('Mountain View', $info->getCity());
+        $this->assertEquals('United States', $info->getCountry());
     }
 }

@@ -16,12 +16,19 @@ class Pipeline
         $this->operations = $operations;
     }
 
-    public function apply()
+    public function getItems(): array
     {
-        array_map(function ($operation) {
-            $this->items = $operation($this->items);
-        }, $this->operations);
-
         return $this->items;
+    }
+
+    public function __call(string $name, $arr): self
+    {
+        if (!is_callable($this->operations[$name])) {
+            throw new \Exception('No such operation');
+        }
+
+        $result = $this->operations[$name]($this->items);
+
+        return new Pipeline($result, $this->operations);
     }
 }
