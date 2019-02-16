@@ -2,8 +2,6 @@
 
 namespace Argentum88\OOP;
 
-use Argentum88\OOP\GeoInfo\GeoInfo;
-
 class SuperGeo
 {
     /**
@@ -21,24 +19,16 @@ class SuperGeo
      */
     public function getInfo(string $ip): GeoInfoInterface
     {
-        if ($this->ipIsValid($ip)) {
-            $info = $this->ipToGeoService->getInfo($ip);
+        $this->validateIp($ip);
 
-            if ($this->infoIsValid($info)) {
-                return new GeoInfo($info['city'], $info['country']);
-            }
-        }
-
-        throw new \Exception('Error');
+        return $this->ipToGeoService->getInfo($ip);
     }
 
-    private function ipIsValid(string $ip): bool
+    /**
+     * @throws \Exception
+     */
+    private function validateIp(string $ip)
     {
-        return true;
-    }
-
-    private function infoIsValid(array $info): bool
-    {
-        return true;
+        return;
     }
 }
