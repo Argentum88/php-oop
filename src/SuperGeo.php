@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Argentum88\OOP;
 
@@ -19,7 +19,7 @@ class SuperGeo
         return $this->ipToGeoService->getInfo($this->validateIp($ip));
     }
 
-    private function validateIp(string $ip)
+    private function validateIp(string $ip): string
     {
         return $ip;
     }

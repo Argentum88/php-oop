@@ -19,7 +19,7 @@ class IpApiCom implements IpToGeoInterface
 
     public function getInfo(string $ip): GeoInfoInterface
     {
-        $response = $this->client->request('GET', '/json/'.$ip);
+        $response = $this->client->request('GET', '/json/' . $ip);
         $data = json_decode($response->getBody()->getContents(), true);
 
         return new GeoInfo($data['city'], $data['country']);
