@@ -2,8 +2,8 @@
 
 <?php
 
-use Argentum88\OOP\IpToGeo\IpApiCom;
-use Argentum88\OOP\SuperGeo;
+use Argentum88\OOP\Geo\IpToGeo\IpApiCom;
+use Argentum88\OOP\Geo\SuperGeo;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

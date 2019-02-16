@@ -1,11 +1,11 @@
 <?php
 
-namespace Argentum88\OOP\Tests;
+namespace Argentum88\OOP\Tests\Geo;
 
-use Argentum88\OOP\GeoInfo\GeoInfo;
-use Argentum88\OOP\GeoInfoInterface;
-use Argentum88\OOP\IpToGeoInterface;
-use Argentum88\OOP\SuperGeo;
+use Argentum88\OOP\Geo\GeoInfo\GeoInfo;
+use Argentum88\OOP\Geo\GeoInfoInterface;
+use Argentum88\OOP\Geo\IpToGeoInterface;
+use Argentum88\OOP\Geo\SuperGeo;
 use PHPUnit\Framework\TestCase;
 
 class SuperGeoTest extends TestCase
@@ -29,7 +29,7 @@ class SuperGeoTest extends TestCase
 
     public function testGetInfo()
     {
-        $this->assertInstanceOf(GeoInfoInterface::class ,$this->superGeo->getInfo(''));
-        $this->assertInstanceOf(GeoInfoInterface::class ,$this->superGeo->getInfo('8.8.8.8'));
+        $this->assertInstanceOf(GeoInfoInterface::class, $this->superGeo->getInfo(''));
+        $this->assertInstanceOf(GeoInfoInterface::class, $this->superGeo->getInfo('8.8.8.8'));
     }
 }

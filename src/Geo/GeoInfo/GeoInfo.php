@@ -1,8 +1,8 @@
 <?php
 
-namespace Argentum88\OOP\GeoInfo;
+namespace Argentum88\OOP\Geo\GeoInfo;
 
-use Argentum88\OOP\GeoInfoInterface;
+use Argentum88\OOP\Geo\GeoInfoInterface;
 
 class GeoInfo implements GeoInfoInterface
 {

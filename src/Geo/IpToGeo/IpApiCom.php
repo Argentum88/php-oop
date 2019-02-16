@@ -1,10 +1,10 @@
 <?php
 
-namespace Argentum88\OOP\IpToGeo;
+namespace Argentum88\OOP\Geo\IpToGeo;
 
-use Argentum88\OOP\GeoInfo\GeoInfo;
-use Argentum88\OOP\GeoInfoInterface;
-use Argentum88\OOP\IpToGeoInterface;
+use Argentum88\OOP\Geo\GeoInfo\GeoInfo;
+use Argentum88\OOP\Geo\GeoInfoInterface;
+use Argentum88\OOP\Geo\IpToGeoInterface;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Argentum88\OOP;
+namespace Argentum88\OOP\Geo;
 
 interface IpToGeoInterface
 {

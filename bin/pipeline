@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+
+<?php
+
+use Argentum88\OOP\Pipeline\Pipeline;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$middle = function($items) {
+    $index = round(count($items) / 2);
+
+    return [$items[$index]];
+};
+
+$plural = function($items) {
+    return array_map(function ($item) {
+        return substr($item, -1) == 's' ? $item : $item . 's';
+    }, $items);
+};
+
+$upperCase = function($items) {
+    return array_map(function ($item) {
+        return strtoupper($item);
+    }, $items);
+};
+
+$items = array_diff(scandir(getcwd()), array('.', '..'));
+$pipeline = new Pipeline(array_values($items), [$middle, $plural, $upperCase]);
+
+array_map(function ($item) {
+    echo $item.PHP_EOL;
+}, $pipeline->apply());
