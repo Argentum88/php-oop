@@ -12,5 +12,9 @@ $ip = $argc > 1 ? $argv[1] : '';
 $geoService = new IpApiCom();
 $superGeo = new SuperGeo($geoService);
 
-$info = $superGeo->getInfo($ip);
-echo "{$info->getCountry()} - {$info->getCity()}\n";
+try {
+    $info = $superGeo->getInfo($ip);
+    echo "{$info->getCountry()} - {$info->getCity()}\n";
+} catch (Throwable $e) {
+    echo "Произошла ошибка!\n";
+}
