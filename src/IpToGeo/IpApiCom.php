@@ -29,7 +29,7 @@ class IpApiCom implements IpToGeoInterface
         $data = json_decode($response->getBody()->getContents(), true);
 
         if (!is_array($data) || !array_key_exists('city', $data) || !array_key_exists('country', $data)) {
-            throw new Exception();
+            throw new Exception('Internal error');
         }
 
         return new GeoInfo($data['city'], $data['country']);

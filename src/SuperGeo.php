@@ -36,7 +36,7 @@ class SuperGeo
         }
 
         if (!filter_var($ip, FILTER_VALIDATE_IP)) {
-            throw new Exception();
+            throw new Exception('Ip is invalid');
         }
     }
 }

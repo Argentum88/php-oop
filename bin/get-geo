@@ -16,5 +16,5 @@ try {
     $info = $superGeo->getInfo($ip);
     echo "{$info->getCountry()} - {$info->getCity()}\n";
 } catch (Throwable $e) {
-    echo "Произошла ошибка!\n";
+    echo $e->getMessage().PHP_EOL;
 }
