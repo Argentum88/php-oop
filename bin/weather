@@ -9,17 +9,21 @@ use Argentum88\OOP\Weather\WeatherServices\Weatherbit;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$repository = new WeatherRepository();
-$repository->register('weatherbit', new Weatherbit('205af5aa4c764c00b5b7bbed6de10e19'));
-$repository->register('apixu', new Apixu('d07242607cd64efb81622523191702'));
+try {
+    $repository = new WeatherRepository();
+    $repository->register('weatherbit', new Weatherbit('205af5aa4c764c00b5b7bbed6de10e19'));
+    $repository->register('apixu', new Apixu('d07242607cd64efb81622523191702'));
 
-$weatherFactory = new WeatherFactory($repository);
+    $weatherFactory = new WeatherFactory($repository);
 
-$opt = getopt('', ['service:'], $optind);
-$serviceName = $opt['service'];
-$city = array_slice($argv, $optind)[0];
+    $opt = getopt('', ['service:'], $optind);
+    $serviceName = $opt['service'];
+    $city = array_slice($argv, $optind)[0];
 
-$weather = $weatherFactory->build($serviceName);
+    $weather = $weatherFactory->build($serviceName);
 
-$info = $weather->getInfo($city);
-echo "В городе $city - {$info->getTemp()} градусов\n";
+    $info = $weather->getInfo($city);
+    echo "В городе $city - {$info->getTemp()} градусов\n";
+} catch (Throwable $e) {
+    echo $e->getMessage().PHP_EOL;
+}

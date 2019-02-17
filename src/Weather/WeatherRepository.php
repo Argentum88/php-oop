@@ -2,6 +2,8 @@
 
 namespace Argentum88\OOP\Weather;
 
+use Exception;
+
 class WeatherRepository implements RepositoryInterface
 {
     private $weatherServices;
@@ -20,6 +22,10 @@ class WeatherRepository implements RepositoryInterface
 
     public function find(string $serviceName): WeatherServiceInterface
     {
+        if (!array_key_exists($serviceName, $this->weatherServices)) {
+            throw new Exception('No such service');
+        }
+
         return $this->weatherServices[$serviceName];
     }
 }
