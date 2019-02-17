@@ -19,7 +19,7 @@ class GeoTest extends TestCase
         };
 
         $geo = createGeo($httpClient);
-        getGeoInfo($geo, '8.8.8.8');
+        $geo('8.8.8.8');
     }
 
     public function testGetInfo()
@@ -29,7 +29,7 @@ class GeoTest extends TestCase
         };
 
         $geo = createGeo($httpClient);
-        $info = getGeoInfo($geo, '8.8.8.8');
+        $info = $geo('8.8.8.8');
         $this->assertEquals('Mountain View', getCity($info));
         $this->assertEquals('United States', getCountry($info));
     }

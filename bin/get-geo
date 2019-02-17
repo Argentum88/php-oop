@@ -14,7 +14,7 @@ $ip = $argc > 1 ? $argv[1] : '';
 
 $httpClient = createHttpClient();
 $geo = createGeo($httpClient);
-$info = getGeoInfo($geo, $ip);
+$info = $geo($ip);
 
 try {
     echo getCountry($info) . ' ' . getCity($info) . PHP_EOL;
