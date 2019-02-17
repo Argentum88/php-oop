@@ -11,7 +11,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $ip = $argc > 1 ? $argv[1] : '';
 
-$httpClient = createHttpClient('http://ip-api.com');
+$httpClient = createHttpClient();
 $info = getGeoInfo($httpClient, $ip);
 
 try {

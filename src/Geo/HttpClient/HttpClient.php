@@ -4,11 +4,10 @@ namespace Argentum88\OOP\Geo\GeoInfo;
 
 use GuzzleHttp\Client;
 
-function createHttpClient($base_uri)
+function createHttpClient()
 {
-    $client = new Client(['base_uri' => $base_uri]);
-
-    return function ($method, $url) use ($client) {
+    return function ($baseUri, $method, $url) {
+        $client = new Client(['base_uri' => $baseUri]);
         $response = $client->request($method, $url);
 
         return json_decode($response->getBody()->getContents(), true);

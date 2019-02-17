@@ -24,7 +24,7 @@
             "Argentum88\\OOP\\Tests\\": "tests/"
         },
         "files": [
-            "src/Geo/HttpClient/Http.php",
+            "src/Geo/HttpClient/HttpClient.php",
             "src/Geo/GeoInfo/GeoInfo.php",
             "src/Geo/Geo.php"
         ]
