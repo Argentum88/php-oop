@@ -2,7 +2,7 @@
 
 <?php
 
-use function Argentum88\OOP\Geo\GeoInfo\createHttpClient;
+use function Argentum88\OOP\Geo\HttpClient\createHttpClient;
 use function Argentum88\OOP\Geo\getGeoInfo;
 use function Argentum88\OOP\Geo\GeoInfo\getCountry;
 use function Argentum88\OOP\Geo\GeoInfo\getCity;

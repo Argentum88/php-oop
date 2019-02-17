@@ -1,6 +1,6 @@
 <?php
 
-namespace Argentum88\OOP\Geo\GeoInfo;
+namespace Argentum88\OOP\Geo\HttpClient;
 
 use GuzzleHttp\Client;
 
