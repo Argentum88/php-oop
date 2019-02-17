@@ -9,21 +9,34 @@ use Argentum88\OOP\Weather\WeatherServices\Weatherbit;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+function parseOptions()
+{
+    $opt = getopt('', ['service:'], $optind);
+    if (!array_key_exists('service', $opt)) {
+        throw new Exception('--service param not found');
+    }
+
+    $remainingArgs = array_slice($_SERVER['argv'], $optind);
+    if (!$remainingArgs) {
+        throw new Exception('City not specified');
+    }
+
+    $serviceName = $opt['service'];
+    $city = $remainingArgs[0];
+
+    return [$serviceName, $city];
+}
+
 try {
     $repository = new WeatherRepository();
     $repository->register('weatherbit', new Weatherbit('205af5aa4c764c00b5b7bbed6de10e19'));
     $repository->register('apixu', new Apixu('d07242607cd64efb81622523191702'));
 
+    [$serviceName, $city] = parseOptions();
     $weatherFactory = new WeatherFactory($repository);
-
-    $opt = getopt('', ['service:'], $optind);
-    $serviceName = $opt['service'];
-    $city = array_slice($argv, $optind)[0];
-
     $weather = $weatherFactory->build($serviceName);
-
     $info = $weather->getInfo($city);
-    echo "В городе $city - {$info->getTemp()} градусов\n";
+    echo "В городе $city {$info->getTemp()} градусов\n";
 } catch (Throwable $e) {
     echo $e->getMessage().PHP_EOL;
 }
