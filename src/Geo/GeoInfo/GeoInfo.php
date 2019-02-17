@@ -2,29 +2,19 @@
 
 namespace Argentum88\OOP\Geo\GeoInfo;
 
-use Argentum88\OOP\Geo\GeoInfoInterface;
-
-class GeoInfo implements GeoInfoInterface
+function createGeoInfo($city, $country)
 {
-    /** @var string */
-    private $city;
+    return function () use ($city, $country) {
+        return [$city, $country];
+    };
+}
 
-    /** @var string */
-    private $country;
+function getCity($geoInfo)
+{
+    return $geoInfo()[0];
+}
 
-    public function __construct(string $city, string $country)
-    {
-        $this->city = $city;
-        $this->country = $country;
-    }
-
-    public function getCity(): string
-    {
-        return $this->city;
-    }
-
-    public function getCountry(): string
-    {
-        return $this->country;
-    }
+function getCountry($geoInfo)
+{
+    return $geoInfo()[1];
 }

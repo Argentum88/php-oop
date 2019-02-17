@@ -2,19 +2,20 @@
 
 <?php
 
-use Argentum88\OOP\Geo\IpToGeo\IpApiCom;
-use Argentum88\OOP\Geo\SuperGeo;
+use function Argentum88\OOP\Geo\GeoInfo\createHttpClient;
+use function Argentum88\OOP\Geo\getGeoInfo;
+use function Argentum88\OOP\Geo\GeoInfo\getCountry;
+use function Argentum88\OOP\Geo\GeoInfo\getCity;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $ip = $argc > 1 ? $argv[1] : '';
 
-$geoService = new IpApiCom();
-$superGeo = new SuperGeo($geoService);
+$httpClient = createHttpClient('http://ip-api.com');
+$info = getGeoInfo($httpClient, $ip);
 
 try {
-    $info = $superGeo->getInfo($ip);
-    echo "{$info->getCountry()} - {$info->getCity()}\n";
+    echo getCountry($info) . ' ' . getCity($info) . PHP_EOL;
 } catch (Throwable $e) {
     echo $e->getMessage().PHP_EOL;
 }

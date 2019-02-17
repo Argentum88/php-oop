@@ -22,6 +22,11 @@
         "psr-4": {
             "Argentum88\\OOP\\": "src/",
             "Argentum88\\OOP\\Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "src/Geo/HttpClient/Http.php",
+            "src/Geo/GeoInfo/GeoInfo.php",
+            "src/Geo/Geo.php"
+        ]
     }
 }
