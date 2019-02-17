@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+
+<?php
+
+use Argentum88\OOP\Weather\SuperWeather;
+use Argentum88\OOP\Weather\WeatherServices\Apixu;
+use Argentum88\OOP\Weather\WeatherServices\Weatherbit;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$seatherService = new Weatherbit();
+$superWeather = new SuperWeather($seatherService);
+
+$info = $superWeather->getInfo('Moscow');
+$a = 1;
