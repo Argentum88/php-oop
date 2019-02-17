@@ -5,7 +5,7 @@ namespace Argentum88\OOP\Weather;
 
 interface RepositoryInterface
 {
-    public function register(WeatherServiceInterface $weatherService);
+    public function register(string $name, WeatherServiceInterface $weatherService);
 
-    public function find($serviceName): WeatherServiceInterface;
+    public function find(string $serviceName): WeatherServiceInterface;
 }

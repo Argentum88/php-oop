@@ -2,7 +2,7 @@
 
 namespace Argentum88\OOP\Weather;
 
-class SuperWeatherFactory
+class WeatherFactory
 {
     private $weatherRepository;
 
@@ -11,10 +11,10 @@ class SuperWeatherFactory
         $this->weatherRepository = $weatherRepository;
     }
 
-    public function build(string $serviceName): SuperWeather
+    public function build(string $serviceName): Weather
     {
         $weatherService = $this->weatherRepository->find($serviceName);
 
-        return new SuperWeather($weatherService);
+        return new Weather($weatherService);
     }
 }

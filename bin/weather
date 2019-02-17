@@ -2,7 +2,7 @@
 
 <?php
 
-use Argentum88\OOP\Weather\SuperWeatherFactory;
+use Argentum88\OOP\Weather\WeatherFactory;
 use Argentum88\OOP\Weather\WeatherRepository;
 use Argentum88\OOP\Weather\WeatherServices\Apixu;
 use Argentum88\OOP\Weather\WeatherServices\Weatherbit;
@@ -10,11 +10,16 @@ use Argentum88\OOP\Weather\WeatherServices\Weatherbit;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $repository = new WeatherRepository();
-$repository->register(new Weatherbit('205af5aa4c764c00b5b7bbed6de10e19'));
-$repository->register(new Apixu('d07242607cd64efb81622523191702'));
+$repository->register('weatherbit', new Weatherbit('205af5aa4c764c00b5b7bbed6de10e19'));
+$repository->register('apixu', new Apixu('d07242607cd64efb81622523191702'));
 
-$factory = new SuperWeatherFactory($repository);
-$superWeather = $factory->build(Weatherbit::class);
+$weatherFactory = new WeatherFactory($repository);
 
-$info = $superWeather->getInfo('Moscow');
-$a = 1;
+$opt = getopt('', ['service:'], $optind);
+$serviceName = $opt['service'];
+$city = array_slice($argv, $optind)[0];
+
+$weather = $weatherFactory->build($serviceName);
+
+$info = $weather->getInfo($city);
+echo "В городе $city - {$info->getTemp()} градусов\n";

@@ -2,7 +2,7 @@
 
 namespace Argentum88\OOP\Weather;
 
-class SuperWeather
+class Weather
 {
     /**
      * @var WeatherServiceInterface

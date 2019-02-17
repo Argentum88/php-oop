@@ -6,22 +6,19 @@ class WeatherRepository implements RepositoryInterface
 {
     private $weatherServices;
 
-    /**
-     * @param WeatherServiceInterface[] $weatherServices
-     */
-    public function __construct($weatherServices = [])
+    public function __construct(array $weatherServices = [])
     {
-        foreach ($weatherServices as $weatherService) {
-            $this->weatherServices[get_class($weatherService)] = $weatherService;
+        foreach ($weatherServices as $name => $weatherService) {
+            $this->weatherServices[$name] = $weatherService;
         }
     }
 
-    public function register(WeatherServiceInterface $weatherService)
+    public function register(string $name, WeatherServiceInterface $weatherService)
     {
-        $this->weatherServices[get_class($weatherService)] = $weatherService;
+        $this->weatherServices[$name] = $weatherService;
     }
 
-    public function find($serviceName): WeatherServiceInterface
+    public function find(string $serviceName): WeatherServiceInterface
     {
         return $this->weatherServices[$serviceName];
     }
