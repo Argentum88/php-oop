@@ -4,11 +4,11 @@ namespace Argentum88\OOP\Geo;
 
 use function Argentum88\OOP\Geo\GeoInfo\createGeoInfo;
 
-function createGeo($httpClient)
+function createGeo($makeHttpRequest)
 {
-    return function($ip) use ($httpClient) {
+    return function($ip) use ($makeHttpRequest) {
 
-        $data = $httpClient('http://ip-api.com', 'GET', '/json/' . $ip);
+        $data = $makeHttpRequest('http://ip-api.com', 'GET', '/json/' . $ip);
         if (!is_array($data) || !array_key_exists('city', $data) || !array_key_exists('country', $data)) {
             throw new \Exception('Internal error');
         }
