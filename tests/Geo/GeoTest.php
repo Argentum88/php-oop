@@ -2,6 +2,7 @@
 
 namespace Argentum88\OOP\Tests\Geo;
 
+use function Argentum88\OOP\Geo\createGeo;
 use function Argentum88\OOP\Geo\GeoInfo\getCity;
 use function Argentum88\OOP\Geo\GeoInfo\getCountry;
 use function Argentum88\OOP\Geo\getGeoInfo;
@@ -17,7 +18,8 @@ class GeoTest extends TestCase
             return 'bad data';
         };
 
-        getGeoInfo($httpClient, '8.8.8.8');
+        $geo = createGeo($httpClient);
+        getGeoInfo($geo, '8.8.8.8');
     }
 
     public function testGetInfo()
@@ -26,7 +28,8 @@ class GeoTest extends TestCase
             return ['city' => 'Mountain View', 'country' => 'United States'];
         };
 
-        $info = getGeoInfo($httpClient, '8.8.8.8');
+        $geo = createGeo($httpClient);
+        $info = getGeoInfo($geo, '8.8.8.8');
         $this->assertEquals('Mountain View', getCity($info));
         $this->assertEquals('United States', getCountry($info));
     }
