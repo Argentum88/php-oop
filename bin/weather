@@ -2,14 +2,19 @@
 
 <?php
 
-use Argentum88\OOP\Weather\SuperWeather;
+use Argentum88\OOP\Weather\SuperWeatherFactory;
+use Argentum88\OOP\Weather\WeatherRepository;
 use Argentum88\OOP\Weather\WeatherServices\Apixu;
 use Argentum88\OOP\Weather\WeatherServices\Weatherbit;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$seatherService = new Weatherbit();
-$superWeather = new SuperWeather($seatherService);
+$repository = new WeatherRepository();
+$repository->register(new Weatherbit('205af5aa4c764c00b5b7bbed6de10e19'));
+$repository->register(new Apixu('d07242607cd64efb81622523191702'));
+
+$factory = new SuperWeatherFactory($repository);
+$superWeather = $factory->build(Weatherbit::class);
 
 $info = $superWeather->getInfo('Moscow');
 $a = 1;

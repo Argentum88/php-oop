@@ -17,10 +17,10 @@ class Weatherbit implements WeatherServiceInterface
     /** @var string */
     private $apiKey;
 
-    public function __construct(string $apiKey = '')
+    public function __construct(string $apiKey)
     {
         $this->client = new Client(['base_uri' => 'https://api.weatherbit.io/v2.0/']);
-        $this->apiKey = '205af5aa4c764c00b5b7bbed6de10e19';
+        $this->apiKey = $apiKey;
     }
 
     /**

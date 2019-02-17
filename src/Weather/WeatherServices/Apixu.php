@@ -17,10 +17,10 @@ class Apixu implements WeatherServiceInterface
     /** @var string */
     private $apiKey;
 
-    public function __construct(string $apiKey = '')
+    public function __construct(string $apiKey)
     {
         $this->client = new Client(['base_uri' => 'http://api.apixu.com/v1/']);
-        $this->apiKey = 'd07242607cd64efb81622523191702';
+        $this->apiKey = $apiKey;
     }
 
     /**
